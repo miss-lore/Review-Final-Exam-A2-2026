@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>Review Final Exam A2</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #F3F4F9;
+            --surface: #fff;
+            --surface2: #F0F2F8;
+            --ink: #11131A;
+            --muted: #6B7285;
+            --line: #E3E6EE;
+            --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 18px 40px -18px rgba(16, 24, 40, .18);
+            --s1: #3D63F0;
+            --s2: #0E9F8E;
+            --s3: #E8456E;
+            --t1: #2F5BEA;
+            --t2: #0E8F83;
+            --t3: #C98A12;
+            --t4: #E0622B;
+            --t5: #D63C5E;
+            --t6: #7B52E8;
+            --t7: #BF3FCB;
+            --t8: #3E9A33;
+            --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+            --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+            --mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root {
+                --bg: #0C0E13;
+                --surface: #151922;
+                --surface2: #1D222D;
+                --ink: #F1F3F7;
+                --muted: #9097A6;
+                --line: #272D3A;
+                --shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 18px 40px -18px rgba(0, 0, 0, .7);
+                --s1: #8AA4FF;
+                --s2: #4FD1C0;
+                --s3: #FF7FA0;
+                --t1: #7FA0FF;
+                --t2: #4FD1C0;
+                --t3: #F2B84B;
+                --t4: #FF9A62;
+                --t5: #FF7A9A;
+                --t6: #B79CFF;
+                --t7: #E58CF2;
+                --t8: #7FD672;
+                color-scheme: dark
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bg);
+            background-image: radial-gradient(60rem 26rem at 12% -8%, color-mix(in srgb, var(--s1) 14%, transparent), transparent 70%), radial-gradient(48rem 24rem at 96% -6%, color-mix(in srgb, var(--s3) 12%, transparent), transparent 70%);
+            background-repeat: no-repeat;
+            color: var(--ink);
+            font: 16px/1.55 var(--body);
+            padding: 44px max(20px, env(safe-area-inset-right)) 72px max(20px, env(safe-area-inset-left))
+        }
+
+        .wrap {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px
+        }
+
+        #prog {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 0;
+            background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3));
+            transition: width .3s;
+            z-index: 9
+        }
+
+        h1 {
+            font: 700 clamp(2.7rem, 9vw, 3.9rem)/1 var(--display);
+            letter-spacing: -.045em;
+            margin: 0
+        }
+
+        .sub {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 1.05rem
+        }
+
+        .mono {
+            font: 500 .72rem var(--mono);
+            letter-spacing: .04em;
+            text-transform: uppercase
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-top: 22px
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: .88rem;
+            font-weight: 600;
+            white-space: nowrap
+        }
+
+        .chip::before {
+            content: "";
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--c);
+            flex: none;
+            display: inline-block
+        }
+
+        .total {
+            display: inline-block;
+            margin-top: 22px;
+            padding: 5px 14px;
+            border-radius: 99px;
+            background: var(--ink);
+            color: var(--bg)
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 20px
+        }
+
+        @media(max-width:480px) {
+            .card {
+                padding: 20px;
+                border-radius: 24px
+            }
+        }
+
+        .s1 {
+            --h: var(--s1)
+        }
+
+        .s2 {
+            --h: var(--s2)
+        }
+
+        .s3 {
+            --h: var(--s3)
+        }
+
+        .s4 {
+            --h: var(--t4)
+        }
+
+        .s5 {
+            --h: var(--t6)
+        }
+
+        .s6 {
+            --h: var(--t3)
+        }
+
+        .s7 {
+            --h: var(--t7)
+        }
+
+        .s8 {
+            --h: var(--t8)
+        }
+
+        .vhead {
+            display: flex;
+            align-items: center;
+            gap: 14px
+        }
+
+        .ico {
+            flex: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 17px;
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+            background: color-mix(in srgb, var(--h) 16%, var(--surface))
+        }
+
+        .vhead h2 {
+            font: 700 clamp(1.3rem, 4.5vw, 1.8rem)/1.1 var(--display);
+            letter-spacing: -.03em;
+            margin: 0
+        }
+
+        .vhead .mono {
+            color: var(--h);
+            display: block;
+            margin-bottom: 4px
+        }
+
+        .inst {
+            margin: 0;
+            color: var(--muted);
+            font-size: .96rem
+        }
+
+        .name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .name label {
+            font-weight: 700
+        }
+
+        .line {
+            font: inherit;
+            color: var(--ink);
+            background: var(--surface2);
+            border: 1.5px solid var(--line);
+            border-radius: 14px;
+            padding: 8px 14px;
+            transition: border-color .15s, box-shadow .15s;
+            outline: 0;
+            flex: 1;
+            min-width: 220px;
+            font-size: 1.05rem
+        }
+
+        .line:focus {
+            border-color: var(--h, var(--s1));
+            box-shadow: 0 0 0 4px color-mix(in srgb, var(--h, var(--s1)) 16%, transparent)
+        }
+
+        .row {
+            display: flex;
+            gap: 14px;
+            align-items: baseline;
+            padding: 14px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .row:first-of-type {
+            border-top: 0
+        }
+
+        .n {
+            flex: none;
+            width: 2.4ch;
+            color: var(--h);
+            font: 600 .85rem var(--mono)
+        }
+
+        .lead {
+            margin: 0;
+            font: 600 1.12rem/1.7 var(--display);
+            letter-spacing: -.01em
+        }
+
+        .gap {
+            display: inline-block;
+            width: 3.6ch;
+            border-bottom: 2.5px solid var(--h);
+            margin: 0 3px;
+            transform: translateY(-.15em)
+        }
+
+        .opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px
+        }
+
+        .opts label {
+            display: inline-flex;
+            align-items: center;
+            border: 1.5px solid var(--line);
+            background: var(--surface2);
+            border-radius: 99px;
+            padding: 5px 14px;
+            font-size: .92rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: .15s
+        }
+
+        .opts label:hover {
+            border-color: var(--c)
+        }
+
+        .opts {
+            --c: var(--h)
+        }
+
+        .opts label {
+            position: relative
+        }
+
+        .opts input {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+            pointer-events: none
+        }
+
+        .opts label:has(input:focus-visible) {
+            outline: 2.5px solid var(--ink);
+            outline-offset: 2px
+        }
+
+        .opts label:has(input:checked) {
+            background: var(--c);
+            border-color: var(--c);
+            color: #fff
+        }
+
+        .sel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px
+        }
+
+        .send {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            align-items: flex-start
+        }
+
+        button.go {
+            font: 700 1rem var(--body);
+            color: #fff;
+            border: 0;
+            border-radius: 99px;
+            padding: 14px 30px;
+            cursor: pointer;
+            background: linear-gradient(90deg, var(--s1), var(--s3));
+            box-shadow: var(--shadow);
+            transition: transform .2s
+        }
+
+        button.go:hover {
+            transform: translateY(-2px)
+        }
+
+        button.go:disabled {
+            opacity: .6;
+            cursor: wait
+        }
+
+        #res {
+            color: var(--muted);
+            margin: 0
+        }
+
+        :focus-visible {
+            outline: 2.5px solid var(--ink);
+            outline-offset: 3px;
+            border-radius: 8px
+        }
+
+        #toast {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translate(-50%, -120px);
+            background: var(--ink);
+            color: var(--bg);
+            padding: 12px 22px;
+            border-radius: 99px;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            transition: transform .4s;
+            z-index: 20;
+            max-width: 90vw;
+            text-align: center
+        }
+
+        #toast.on {
+            transform: translate(-50%, 0)
+        }
+
+        .sel .lead {
+            line-height: 2
+        }
+
+        .fill {
+            font: 600 1rem var(--body);
+            color: var(--ink);
+            background: color-mix(in srgb, var(--h) 8%, var(--surface2));
+            border: 0;
+            border-bottom: 2.5px solid var(--h);
+            border-radius: 8px 8px 0 0;
+            padding: 3px 8px;
+            margin: 0 4px;
+            width: calc(var(--w, 18) * 1ch);
+            max-width: 100%;
+            text-align: center;
+            outline: 0;
+            transition: background .15s
+        }
+
+        .fill.short {
+            --w: 10
+        }
+
+        .fill:focus {
+            background: color-mix(in srgb, var(--h) 18%, var(--surface2))
+        }
+
+        .fill.wide {
+            display: block;
+            width: min(100%, 340px);
+            text-align: left;
+            margin: 10px 0 0;
+            padding: 8px 12px
+        }
+
+        .hint {
+            font: 500 .82rem var(--mono);
+            color: var(--muted);
+            margin-right: 6px;
+            white-space: nowrap
+        }
+
+        .te {
+            color: var(--h)
+        }
+
+        .bank {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .bank span {
+            border: 1.5px dashed var(--h);
+            border-radius: 99px;
+            padding: 4px 14px;
+            font-size: .9rem;
+            font-weight: 600;
+            color: var(--h)
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        :root {
+            --good: var(--t8);
+            --bad: var(--t5)
+        }
+
+        .gap {
+            min-width: 3.6ch;
+            text-align: center
+        }
+
+        .gap i {
+            font: 600 .68rem/1 var(--mono);
+            font-style: normal;
+            color: var(--h);
+            vertical-align: top
+        }
+
+        .pick {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px
+        }
+
+        .pick .hint {
+            margin: 14px 0 0;
+            color: var(--h)
+        }
+
+        .fill:disabled {
+            opacity: 1;
+            -webkit-text-fill-color: var(--ink)
+        }
+
+        .locked .opts label {
+            cursor: default
+        }
+
+        .locked .opts label:not(:has(input:checked)):hover {
+            border-color: var(--line)
+        }
+
+        .row.ok .n {
+            color: var(--good)
+        }
+
+        .row.bad .n {
+            color: var(--bad)
+        }
+
+        .row.ok .fill {
+            border-bottom-color: var(--good)
+        }
+
+        .row.bad .fill {
+            border-bottom-color: var(--bad);
+            background: color-mix(in srgb, var(--bad) 10%, var(--surface2))
+        }
+
+        .row.ok .opts label:has(input:checked) {
+            background: color-mix(in srgb, var(--good) 22%, var(--surface));
+            border-color: var(--good);
+            color: var(--ink)
+        }
+
+        .row.bad .opts label:has(input:checked) {
+            background: color-mix(in srgb, var(--bad) 20%, var(--surface));
+            border-color: var(--bad);
+            color: var(--ink)
+        }
+
+        .status {
+            font: 600 .76rem var(--mono);
+            letter-spacing: .03em;
+            margin-top: 6px
+        }
+
+        .status.ok {
+            color: var(--good)
+        }
+
+        .status.bad {
+            color: var(--bad)
+        }
+
+        .result[hidden],
+        .send[hidden] {
+            display: none
+        }
+
+        .result button.go {
+            align-self: flex-start
+        }
+
+        .big {
+            font: 700 clamp(3.2rem, 13vw, 4.8rem)/1 var(--display);
+            letter-spacing: -.045em;
+            margin-top: 6px
+        }
+
+        .big small {
+            font-size: .36em;
+            color: var(--muted);
+            font-weight: 600;
+            letter-spacing: 0;
+            margin-left: 8px
+        }
+
+        .rmsg {
+            margin: 10px 0 0;
+            font-size: 1.05rem;
+            font-weight: 600
+        }
+
+        .rp {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            padding: 12px 0;
+            border-top: 1px solid var(--line)
+        }
+
+        .rp .top {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-weight: 600;
+            font-size: .95rem
+        }
+
+        .rp .top b {
+            color: var(--h);
+            font-family: var(--mono)
+        }
+
+        .bar {
+            height: 6px;
+            border-radius: 9px;
+            background: var(--surface2);
+            margin-top: 8px;
+            overflow: hidden
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            background: var(--h);
+            border-radius: 9px
+        }
+
+        .rev {
+            color: var(--muted);
+            font-size: .85rem;
+            margin-top: 6px
+        }
+
+        .tips {
+            border-radius: 20px;
+            padding: 18px 20px;
+            background: color-mix(in srgb, var(--h) 9%, var(--surface));
+            border: 1px solid color-mix(in srgb, var(--h) 30%, var(--line))
+        }
+
+        .tips h3 {
+            font: 700 1.05rem var(--display);
+            letter-spacing: -.01em;
+            margin: 0 0 10px
+        }
+
+        .tips ul {
+            margin: 0;
+            padding-left: 1.2em;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: .95rem
+        }
+
+        details.tips {
+            padding: 0
+        }
+
+        details.tips summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            font: 700 .98rem var(--display);
+            color: var(--h);
+            border-radius: 20px
+        }
+
+        details.tips summary::-webkit-details-marker {
+            display: none
+        }
+
+        details.tips summary::after {
+            content: "+";
+            margin-left: auto;
+            font: 600 1.2rem var(--mono)
+        }
+
+        details.tips[open] summary::after {
+            content: "–"
+        }
+
+        details.tips .tbody {
+            padding: 0 20px 18px
+        }
+
+        details.tips ul {
+            margin: 0
+        }
+
+        .tips.good {
+            background: color-mix(in srgb, var(--good) 10%, var(--surface));
+            border-color: color-mix(in srgb, var(--good) 35%, var(--line));
+            font-weight: 600
+        }
+    </style>
+</head>
+
+<body>
+    <div id="prog"></div>
+    <div class="wrap">
+        <header>
+            <h1>Review Final Exam A2</h1>
+            <p class="sub">Read carefully and write or choose the correct answer in every question. You can use full
+                forms or short forms (I’ll, isn’t), but check your spelling.</p>
+            <div class="chips" id="chips"></div>
+            <span class="total mono">Total: 100 points</span>
+        </header>
+
+        <section class="card s1 result" id="result" hidden aria-live="polite">
+            <div>
+                <div class="big"><b id="rs">0</b><small>/ 100</small></div>
+                <p class="rmsg" id="rmsg"></p>
+            </div>
+            <div id="rparts"></div>
+            <p class="inst">Questions marked ✗ are incorrect. Read the tips at the end of each part, then try again.</p>
+            <button class="go" onclick="resetForm()">Try again</button>
+        </section>
+
+        <section class="card s1">
+            <div class="vhead">
+                <div class="ico">🔮</div>
+                <div><span class="mono">Part 1 · 10 points</span>
+                    <h2>Will or going to?</h2>
+                </div>
+            </div>
+            <p class="inst">Complete each sentence with WILL or GOING TO + the verb in brackets. Example: I think it
+                ______ (be) cold tomorrow → will be.</p>
+            <div id="p1"></div>
+        </section>
+
+        <section class="card s2">
+            <div class="vhead">
+                <div class="ico">🧭</div>
+                <div><span class="mono">Part 2 · 10 points</span>
+                    <h2>Uses of will and going to</h2>
+                </div>
+            </div>
+            <p class="inst">Read each sentence and choose its use.</p>
+            <div id="p2"></div>
+        </section>
+
+        <section class="card s3">
+            <div class="vhead">
+                <div class="ico">⚖️</div>
+                <div><span class="mono">Part 3 · 10 points</span>
+                    <h2>Should or have to?</h2>
+                </div>
+            </div>
+            <p class="inst">Complete each sentence with SHOULD (advice) or HAVE TO (obligation) + the verb in brackets.
+            </p>
+            <div id="p3"></div>
+        </section>
+
+        <section class="card s4">
+            <div class="vhead">
+                <div class="ico">🕰️</div>
+                <div><span class="mono">Part 4 · 10 points</span>
+                    <h2>Past continuous</h2>
+                </div>
+            </div>
+            <p class="inst">Write the verb in brackets in the past continuous. Some sentences have two blanks.</p>
+            <div id="p4"></div>
+        </section>
+
+        <section class="card s6">
+            <div class="vhead">
+                <div class="ico">⏳</div>
+                <div><span class="mono">Part 5 · 10 points</span>
+                    <h2>When or while?</h2>
+                </div>
+            </div>
+            <p class="inst">Choose WHEN or WHILE to complete each sentence.</p>
+            <div id="p5"></div>
+        </section>
+
+        <section class="card s7">
+            <div class="vhead">
+                <div class="ico">⏱️</div>
+                <div><span class="mono">Part 6 · 20 points</span>
+                    <h2>Adverbs and time expressions</h2>
+                </div>
+            </div>
+            <p class="inst">Read each sentence. Look at the adverb or time expression in bold and choose the tense of
+                the sentence.</p>
+            <div id="p6"></div>
+        </section>
+
+        <section class="card s8">
+            <div class="vhead">
+                <div class="ico">🧩</div>
+                <div><span class="mono">Part 7 · 30 points</span>
+                    <h2>Mixed verb tenses</h2>
+                </div>
+            </div>
+            <p class="inst">Write the verb in brackets in the correct tense. Use the clues in each sentence. (not / be)
+                means you need a negative form.</p>
+            <div id="p7"></div>
+        </section>
+
+        <div class="send"><button class="go" onclick="send()">Check my answers →</button>
+            <p id="res"></p>
+        </div>
+    </div>
+    <script>
+        const TOTAL = 100, M = [10, 10, 10, 10, 10, 20, 30];
+        const TITLES = ['Will or going to', 'Uses of will and going to', 'Should or have to', 'Past continuous', 'When or while', 'Adverbs and time expressions', 'Mixed verb tenses'];
+
+        const CH = [['Will / Going to', 's1'], ['Should / Have to', 's3'], ['Past continuous', 's4'], ['When / While', 's6'], ['Time expressions', 's7'], ['Mixed tenses', 's8']];
+        document.getElementById('chips').innerHTML = CH.map(c => '<span class="chip ' + c[1] + '" style="--c:var(--h)">' + c[0] + '</span>').join('');
+
+        // Text parts (1, 3, 4, 7): [sentence, [[hint, accepted answers separated by |], ...]]  – one entry per blank (______).
+        // Multiple-choice parts (2, 5, 6): [sentence, [[correct option, [all options]], ...]]  – one entry per blank.
+        // **text** highlights a time expression.
+
+        const P1 = [
+            ["I think our team ______ the competition.", [["win", "will win"]]],
+            ["Look at those dark clouds! It ______.", [["rain", "is going to rain"]]],
+            ["We have already booked our hotel. We ______ to Brazil next summer.", [["travel", "are going to travel"]]],
+            ["“I’m thirsty!” – “I ______ you some water.”", [["get", "will get"]]],
+            ["She has decided to learn French. She ______ lessons next month.", [["take", "is going to take"]]],
+            ["I promise I ______ you with your homework.", [["help", "will help"]]],
+            ["Be careful! You ______!", [["fall", "are going to fall"]]],
+            ["Perhaps they ______ late.", [["arrive", "will arrive"]]],
+            ["My parents have bought plane tickets. They ______ Italy in July.", [["visit", "are going to visit"]]],
+            ["“The phone is ringing!” – “I ______ it.”", [["answer", "will answer"]]]
+        ];
+
+        const BANK2 = ['Offer', 'Promise', 'Prediction', 'Prediction with evidence', 'Plan / Intention', 'Future event', 'Immediate decision'];
+
+        const P2 = [
+            ["“I’m very tired.” – “I will make you a cup of tea.”", [["Offer", BANK2]]],
+            ["I think people will live on Mars one day.", [["Prediction", BANK2]]],
+            ["Look at that baby! He’s going to cry.", [["Prediction with evidence", BANK2]]],
+            ["She is going to study medicine next year.", [["Plan / Intention", BANK2]]],
+            ["I will never tell anyone your secret.", [["Promise", BANK2]]],
+            ["There will be a football match on Saturday.", [["Future event", BANK2]]],
+            ["“I forgot my notebook!” – “I’ll lend you mine.”", [["Offer", BANK2]]],
+            ["“The doorbell is ringing!” – “I’ll open the door.”", [["Immediate decision", BANK2]]],
+            ["I think Argentina will win the World Cup.", [["Prediction", BANK2]]],
+            ["Look at those black clouds! It’s going to rain.", [["Prediction with evidence", BANK2]]]
+        ];
+
+        const P3 = [
+            ["You have a headache. You ______ more water.", [["drink", "should drink"]]],
+            ["Students ______ a uniform at this school. It’s a school rule.", [["wear", "have to wear"]]],
+            ["You are very tired. You ______ to bed early.", [["go", "should go"]]],
+            ["Every driver ______ at a red traffic light.", [["stop", "has to stop"]]],
+            ["You want to improve your English. You ______ every day.", [["practise", "should practise|should practice"]]],
+            ["I ______ my homework before tomorrow. My teacher will check it.", [["finish", "have to finish"]]],
+            ["Your friend has a toothache. He ______ the dentist.", [["visit", "should visit"]]],
+            ["At the airport, passengers ______ their passports.", [["show", "have to show"]]],
+            ["It’s very cold outside. You ______ a jacket.", [["wear", "should wear"]]],
+            ["We ______ quiet during the exam. It’s a school rule.", [["be", "have to be"]]]
+        ];
+
+        const P4 = [
+            ["She ______ dinner at 8 p.m. yesterday.", [["cook", "was cooking"]]],
+            ["They ______ football in the park.", [["play", "were playing"]]],
+            ["I ______ TV when my mother arrived.", [["watch", "was watching"]]],
+            ["______ you ______ to music at that time?", [["", "were"], ["listen", "listening"]]],
+            ["He ______ his homework when I called him.", [["not / do", "was not doing"]]],
+            ["______ she ______ a book when you arrived?", [["", "was"], ["read", "reading"]]],
+            ["We ______ in the swimming pool yesterday afternoon.", [["swim", "were swimming"]]],
+            ["My father ______ to work at 7 a.m.", [["drive", "was driving"]]],
+            ["The children ______ in the classroom.", [["not / study", "were not studying"]]],
+            ["What ______ they ______ at 9 p.m.?", [["", "were"], ["do", "doing"]]]
+        ];
+
+        const WW = ['when', 'while'];
+        const P5 = [
+            ["I was reading a book ______ the phone rang.", [["when", WW]]],
+            ["______ my mother was cooking, I was setting the table.", [["while", WW]]],
+            ["They were playing football ______ it started to rain.", [["when", WW]]],
+            ["______ I arrived home, my sister was sleeping.", [["when", WW]]],
+            ["He fell off his bike ______ he was riding to school.", [["while", WW]]],
+            ["______ we were watching a film, the lights went out.", [["while", WW]]],
+            ["She was listening to music ______ her father came home.", [["when", WW]]],
+            ["______ the teacher was explaining the lesson, the students were taking notes.", [["while", WW]]],
+            ["I found some money ______ I was walking in the park.", [["while", WW]]],
+            ["______ the alarm rang, everybody was sleeping.", [["when", WW]]]
+        ];
+
+        const BANK6 = ["Simple present", "Present continuous", "Future", "Past"];
+
+        const P6 = [
+            ["**Every morning**, I wake up at 6 a.m.", [["Simple present", BANK6]]],
+            ["**At the moment**, my sister is doing her homework.", [["Present continuous", BANK6]]],
+            ["**Yesterday**, we visited our grandparents.", [["Past", BANK6]]],
+            ["**Tomorrow**, Tom is going to play tennis.", [["Future", BANK6]]],
+            ["My mother **usually** drives to work.", [["Simple present", BANK6]]],
+            ["**Right now**, the children are playing in the garden.", [["Present continuous", BANK6]]],
+            ["**Last weekend**, I went to the beach.", [["Past", BANK6]]],
+            ["**Next year**, they are going to move to a new house.", [["Future", BANK6]]],
+            ["He **often** eats pizza for dinner.", [["Simple present", BANK6]]],
+            ["**Listen!** The baby is crying.", [["Present continuous", BANK6]]],
+            ["**Two days ago**, she bought a new phone.", [["Past", BANK6]]],
+            ["We are in class. **Today** we are learning about animals.", [["Present continuous", BANK6]]],
+            ["**Every Sunday**, we have lunch with my grandparents.", [["Simple present", BANK6]]],
+            ["**Last night**, I watched a funny film.", [["Past", BANK6]]],
+            ["**Soon**, the film is going to start.", [["Future", BANK6]]],
+            ["My dad **never** eats fish.", [["Simple present", BANK6]]],
+            ["**Look!** The cat is climbing the tree.", [["Present continuous", BANK6]]],
+            ["**In 2027**, I am going to finish school.", [["Future", BANK6]]],
+            ["I go to the gym **once a week**.", [["Simple present", BANK6]]],
+            ["**At 8 p.m. yesterday**, they were having dinner.", [["Past", BANK6]]]
+        ];
+
+        const P7 = [
+            ["My sister ______ English every Monday.", [["study", "studies"]]],
+            ["Look! The dog ______ in the garden.", [["run", "is running"]]],
+            ["They ______ at school yesterday.", [["be", "were"]]],
+            ["My father ______ a doctor.", [["be", "is"]]],
+            ["We ______ to the cinema last night.", [["go", "went"]]],
+            ["She ______ dinner when I arrived.", [["cook", "was cooking"]]],
+            ["I think it ______ sunny tomorrow.", [["be", "will be"]]],
+            ["They ______ to Spain next summer. They have already booked the flights.", [["travel", "are going to travel"]]],
+            ["He ______ coffee every morning.", [["drink", "drinks"]]],
+            ["Listen! Someone ______ at the door.", [["knock", "is knocking"]]],
+            ["My parents ______ at home last Sunday.", [["not / be", "were not"]]],
+            ["She ______ her homework two hours ago.", [["finish", "finished"]]],
+            ["We ______ football when it started to rain.", [["play", "were playing"]]],
+            ["I promise I ______ you tomorrow.", [["help", "will help"]]],
+            ["Tom ______ TV at the moment.", [["not / watch", "is not watching"]]],
+            ["______ your brother ______ tennis?", [["", "does"], ["play", "play"]]],
+            ["Where ______ you yesterday afternoon?", [["be", "were"]]],
+            ["My sister ______ meat. She is a vegetarian.", [["not / eat", "does not eat"]]],
+            ["What ______ they ______ when the teacher arrived?", [["", "were"], ["do", "doing"]]],
+            ["She ______ a new computer next month. She has already decided.", [["buy", "is going to buy"]]],
+            ["We ______ our grandparents every weekend.", [["visit", "visit"]]],
+            ["He ______ at the supermarket yesterday.", [["be", "was"]]],
+            ["The children ______ in the pool now.", [["swim", "are swimming"]]],
+            ["I ______ my keys yesterday.", [["lose", "lost"]]],
+            ["While Dad ______ dinner, Mum was watching TV.", [["cook", "was cooking"]]],
+            ["They ______ to the party last Saturday.", [["not / go", "did not go"]]],
+            ["______ she ______ a book right now?", [["", "is"], ["read", "reading"]]],
+            ["I think our teacher ______ us homework tomorrow.", [["give", "will give"]]],
+            ["The students ______ very nervous before the exam yesterday.", [["be", "were"]]],
+            ["My brother ______ his bike when he saw his friend.", [["ride", "was riding"]]]
+        ];
+
+        const PARTS = [
+            {id: 'p1', cls: 's1', qs: P1, w: 22},
+            {id: 'p2', cls: 's2', qs: P2, mc: true, fixed: true},
+            {id: 'p3', cls: 's3', qs: P3, w: 18},
+            {id: 'p4', cls: 's4', qs: P4, w: 18},
+            {id: 'p5', cls: 's6', qs: P5, mc: true, fixed: true},
+            {id: 'p6', cls: 's7', qs: P6, mc: true, fixed: true},
+            {id: 'p7', cls: 's8', qs: P7, w: 22}
+        ];
+
+        // Theory tips: shown after checking, only in the parts where the student made mistakes.
+        const TIPS = [
+            [
+                '<b>will + base verb</b> → predictions based on opinion (<i>I think… / perhaps / probably</i>), promises, offers and quick decisions made at the moment of speaking.',
+                '<b>am / is / are + going to + base verb</b> → plans you decided <u>before</u> speaking, and predictions when you can <u>see</u> evidence now.',
+                'Ask yourself: Was it decided before? Can I see something now? → <i>going to</i>. Is it an opinion, a promise or a sudden decision? → <i>will</i>.',
+                'Do not forget the verb <i>be</i> with <i>going to</i>: She <u>is</u> going to travel. And the verb after <i>will</i> or <i>going to</i> is always in the base form (no -s, no -ing).'
+            ],
+            [
+                '<b>Offer</b> → you want to help another person with a problem or need: <i>You look cold. I’ll close the window.</i>',
+                '<b>Promise</b> → you guarantee something. Clues: <i>promise, never, I won’t…</i>',
+                '<b>Immediate decision</b> → you decide right now, usually after hearing or seeing something (a phone, a doorbell, a sudden idea).',
+                '<b>Prediction</b> → your opinion about the future (<i>I think, probably, perhaps</i> + will). <b>Prediction with evidence</b> → you can see signs now (<i>Look!</i>) → going to.',
+                '<b>Plan / Intention</b> → already decided before speaking (going to + a future time). <b>Future event</b> → a simple fact about the future: <i>There will be…</i>'
+            ],
+            [
+                '<b>should + base verb</b> → advice or a good idea. It is not a rule: <i>You should rest.</i>',
+                '<b>have to + base verb</b> → obligation: rules, laws or things you must do. With he / she / it use <b>has to</b>.',
+                'Clues for <i>have to</i>: <i>rule, law, teacher will check, every driver…</i>. Clues for <i>should</i>: a problem or a wish (<i>headache, tired, want to improve…</i>).',
+                'After <i>should</i> and <i>have to</i> the verb is in the base form. Check spelling: <i>practise / practice</i> is OK in this exam.'
+            ],
+            [
+                '<b>Form:</b> was / were + verb-ing. <i>I, he, she, it → was</i>. <i>You, we, they → were</i>.',
+                '<b>Negative:</b> was not (wasn’t) / were not (weren’t) + verb-ing.',
+                '<b>Questions:</b> Was / Were + subject + verb-ing? <i>Wh-</i> word + was / were + subject + verb-ing?',
+                '<b>Spelling:</b> verbs ending in -e lose the e (<i>make → making</i>); short verbs with consonant-vowel-consonant double the last letter (<i>run → running</i>).',
+                'We use it for an action in progress at a specific moment in the past.'
+            ],
+            [
+                '<b>while</b> + past continuous → a long action in progress. <i>The baby woke up while I was washing the dishes.</i>',
+                '<b>when</b> + past simple → a short action that happens in the middle of the long one (an interruption). <i>I was washing the dishes when the baby woke up.</i>',
+                'Find the long action (past continuous) and the short action (past simple). The short action goes with <i>when</i>; the long action goes with <i>while</i>.',
+                'Remember <i>was / were</i>: I, he, she, it, everybody → <i>was</i>; you, we, they → <i>were</i>. And do not forget -ing!'
+            ],
+            [
+                '<b>Present simple</b> (routines): every day / morning / Sunday, usually, often, never, once a week. With he / she / it add -s.',
+                '<b>Present continuous</b> (happening now): now, right now, at the moment, today, Look!, Listen! → am / is / are + verb-ing.',
+                '<b>Past simple</b> (finished past): yesterday, last night / weekend, two days ago.',
+                '<b>Future</b> (will / going to): tomorrow, next year, soon, in 2027.',
+                '<b>Past continuous</b>: a specific moment in the past, like <i>at 8 p.m. yesterday</i> → was / were + verb-ing.'
+            ],
+            [
+                'First look for the <b>clues</b>: time expressions (<i>every Monday, last night, tomorrow, at the moment</i>), <i>Look! / Listen!</i>, and words like <i>when</i> or <i>while</i>.',
+                '<b>Negatives:</b> present simple → do / does + not + base verb. Past simple → did + not + base verb. Past continuous → was / were + not + verb-ing. Present continuous → am / is / are + not + verb-ing.',
+                '<b>The verb <i>to be</i></b> does not use do / does / did: <i>was / were, am / is / are</i>.',
+                '<b>Questions:</b> Do / Does + subject + base verb? What + was / were + subject + verb-ing?',
+                'Learn the irregular past forms (<i>go → went, lose → lost, buy → bought</i>) and the spelling of -s and -ing endings.'
+            ]
+        ];
+
+        const fmt = t => t.replace(/\*\*(.+?)\*\*/g, '<b class="te">$1</b>');
+        const attrs = 'autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"';
+        const shuffle = a => {const r = a.slice(); for (let i = r.length - 1; i > 0; i--) {const j = Math.floor(Math.random() * (i + 1));[r[i], r[j]] = [r[j], r[i]]} return r};
+
+        function render() {
+            PARTS.forEach((P, n) => {
+                document.getElementById(P.id).innerHTML = P.qs.map((q, j) => {
+                    const multi = q[1].length > 1, text = fmt(q[0]);
+                    let k = 0, body, picks = '';
+                    if (P.mc) {
+                        body = text.replace(/_{3,}/g, () => {k++; return '<span class="gap">' + (multi ? '<i>' + k + '</i>' : '') + '</span>'});
+                        picks = q[1].map((b, i) => {
+                            const id = 'a' + n + '_' + j + '_' + i, opts = P.fixed ? b[1] : shuffle(b[1]);
+                            return '<div class="pick">' + (multi ? '<span class="hint">' + (i + 1) + '</span>' : '') +
+                                '<div class="opts" role="radiogroup" aria-label="Question ' + (j + 1) + (multi ? ', blank ' + (i + 1) : '') + '">' +
+                                opts.map(o => '<label><input type="radio" name="' + id + '" value="' + o + '">' + o + '</label>').join('') + '</div></div>';
+                        }).join('');
+                    } else {
+                        body = text.replace(/_{3,}/g, () => {
+                            const h = q[1][k][0], id = 'a' + n + '_' + j + '_' + k; k++;
+                            return '<input class="fill' + (h ? '' : ' short') + '" style="--w:' + P.w + '" id="' + id + '" aria-label="Blank ' + k + ', question ' + (j + 1) + '" ' + attrs + '>' +
+                                (h ? '<span class="hint">(' + h + ')</span>' : '');
+                        });
+                    }
+                    return '<div class="row ' + P.cls + '" id="r' + n + '_' + j + '"><span class="n">' + (j + 1) + '</span><div class="sel"><p class="lead">' + body + '</p>' + picks + '</div></div>';
+                }).join('');
+                const card = document.getElementById(P.id).closest('.card');
+                card.id = 'sec' + (n + 1);
+                card.querySelectorAll('.tips').forEach(e => e.remove());
+                document.getElementById(P.id).insertAdjacentHTML('beforebegin',
+                    '<details class="tips ' + P.cls + '"><summary>💡 Need help? Tips · ' + TITLES[n] + '</summary><div class="tbody"><ul>' +
+                    TIPS[n].map(t => '<li>' + t + '</li>').join('') + '</ul></div></details>');
+            });
+        }
+        render();
+
+        // Normalizes answers: ignores capitals, extra spaces, final punctuation, contractions and a leading pronoun
+        const norm = s => {
+            s = s.toLowerCase().replace(/[’‘`´]/g, "'")
+                .replace(/\bgonna\b/g, 'going to').replace(/\bwon't\b/g, 'will not')
+                .replace(/n't\b/g, ' not').replace(/'ll\b/g, ' will').replace(/'m\b/g, ' am')
+                .replace(/'re\b/g, ' are').replace(/'s\b/g, ' is').replace(/'ve\b/g, ' have')
+                .replace(/\s*\/\s*/g, '/').replace(/[.,!?;:]+$/, '').replace(/\s+/g, ' ').trim();
+            return s.replace(/^(i|you|he|she|it|we|they)\s+(?=\S)/, '');
+        };
+        const ok = (given, accepted) => {const g = norm(given); return g !== '' && accepted.split('|').some(a => norm(a) === g)};
+
+        const blankDone = el => el.matches('input.fill') ? el.value.trim() !== '' : !!el.querySelector('input:checked');
+        const unanswered = () => [...document.querySelectorAll('.row')].filter(r => ![...r.querySelectorAll('input.fill, .opts')].every(blankDone)).length;
+
+        function prog() {
+            document.getElementById('prog').style.width = ((TOTAL - unanswered()) / TOTAL * 100) + '%'
+        }
+        document.addEventListener('input', prog);
+        document.addEventListener('change', prog);
+
+        function grade() {
+            const S = PARTS.map(() => 0), W = PARTS.map(() => []);
+            PARTS.forEach((P, n) => {
+                P.qs.forEach((q, j) => {
+                    const given = q[1].map((b, k) => {
+                        if (P.mc) {const c = document.querySelector('input[name="a' + n + '_' + j + '_' + k + '"]:checked'); return c ? c.value : ''}
+                        return document.getElementById('a' + n + '_' + j + '_' + k).value.trim();
+                    });
+                    const good = q[1].every((b, k) => P.mc ? given[k] === b[0] : ok(given[k], b[1]));
+                    const empty = given.every(g => g === '');
+                    const row = document.getElementById('r' + n + '_' + j);
+                    row.classList.add(good ? 'ok' : 'bad');
+                    row.querySelector('.sel').insertAdjacentHTML('beforeend',
+                        '<div class="status ' + (good ? 'ok">✓ Correct' : 'bad">✗ ' + (empty ? 'No answer' : 'Incorrect')) + '</div>');
+                    if (good) S[n]++; else W[n].push(j + 1);
+                });
+            });
+            return {S, W, total: S.reduce((a, b) => a + b, 0)};
+        }
+
+        function showResult(r) {
+            document.getElementById('rs').textContent = r.total;
+            const msg = r.total >= 90 ? 'Excellent work! 🌟' : r.total >= 70 ? 'Good job! 👏 Review the questions marked ✗.' : r.total >= 50 ? 'Nice try! 💪 Read the tips and review your mistakes.' : 'Keep practising! 📚 Read the tips below and try again.';
+            document.getElementById('rmsg').textContent = msg + '  (Grade: ' + (r.total / 10) + ' / 10)';
+            document.getElementById('rparts').innerHTML = PARTS.map((P, n) =>
+                '<a class="rp ' + P.cls + '" href="#sec' + (n + 1) + '"><div class="top"><span>Part ' + (n + 1) + ' · ' + TITLES[n] + '</span><b>' + r.S[n] + '/' + M[n] + '</b></div>' +
+                '<div class="bar"><i style="width:' + (r.S[n] / M[n] * 100) + '%"></i></div>' +
+                (r.W[n].length ? '<div class="rev">Review: ' + r.W[n].join(', ') + '</div>' : '<div class="rev">No mistakes ✓</div>') + '</a>').join('');
+            PARTS.forEach((P, n) => {
+                const card = document.getElementById('sec' + (n + 1));
+                card.querySelector('details.tips').open = true;
+                if (!r.W[n].length) card.insertAdjacentHTML('beforeend', '<div class="tips good">🎉 No mistakes in this part. Great job!</div>');
+            });
+            const box = document.getElementById('result');
+            box.hidden = false;
+            box.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+
+        function resetForm() {
+            document.querySelectorAll('.tips').forEach(e => e.remove());
+            document.getElementById('result').hidden = true;
+            document.querySelector('.wrap').classList.remove('locked');
+            document.querySelector('.send').hidden = false;
+            document.getElementById('res').textContent = '';
+            render(); prog(); window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        function send() {
+            const res = document.getElementById('res');
+            res.textContent = '';
+            const left = unanswered();
+            if (left && !confirm('You left ' + left + ' question' + (left > 1 ? 's' : '') + ' unanswered. Check your answers anyway?')) return;
+            const r = grade();
+            document.querySelectorAll('input').forEach(i => {i.disabled = true});
+            document.querySelector('.wrap').classList.add('locked');
+            document.querySelector('.send').hidden = true;
+            showResult(r);
+        }
+    </script>
+</body>
+
+</html>
